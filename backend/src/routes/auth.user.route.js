@@ -2,11 +2,13 @@ const express = require('express');
 const User = require('../model/user.model');
 const generateToken = require('../middleware/generateToken');
 const { CURSOR_FLAGS } = require('mongodb');
+const { registerValidation } = require('../middleware/validators/userValidator');
+const validate = require('../middleware/validators/validate');
 
 const router = express.Router();
 
 // Registracija novog korisnika
-router.post('/register', async(req, res) => {
+router.post('/register',registerValidation, validate, async(req, res) => {
     try{
         const {email, password, username} = req.body;
         const user = new User({email, password, username});
