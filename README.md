@@ -71,6 +71,8 @@ MONGO_URI=mongodb://localhost:27017/ime-baze
 Nakon što uspješno pokrenete frontend i backend dijelove aplikacije, spremni ste za korištenje sistema za objavljivanje blog postova.
 Ukoliko dođe do problema prilikom pokretanja, provjerite:
 
-da su .env varijable ispravno postavljene
-da MongoDB server radi (lokalno ili putem Atlasa)
+da su .env varijable ispravno postavljene,
+
+da MongoDB server radi (lokalno ili putem Atlasa),
+
 da su sve zavisnosti instalirane (npm install)
