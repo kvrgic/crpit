@@ -14,10 +14,10 @@ const Dashboard = () => {
 
   const {data: blogs=[], error, isLoading} = useFetchBlogsQuery(query);
   const {data: comments=[]} = useGetCommentsQuery();
-  const {data: users={}} = useGetUserQuery();
+  const { data: users = {} } = useGetUserQuery();
 
-  const adminCounts = users.users?.filter(user => user.role === "admin").length;
-  const userCount = Object.keys(users).length;
+  const userCount = users.users?.length || 0;
+  const adminCounts = users.users?.filter(user => user.role === "admin").length || 0;
 
 
   return (
