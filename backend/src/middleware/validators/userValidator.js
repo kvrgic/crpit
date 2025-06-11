@@ -1,7 +1,8 @@
+const { body } = require('express-validator');
+
 exports.registerValidation = [
-  body('name')
-    .notEmpty().withMessage('Ime je obavezno')
-    .isLength({ min: 2 }).withMessage('Ime mora imati barem 2 karaktera'),
+  body('username') 
+    .notEmpty().withMessage('Ime je obavezno'),
 
   body('email')
     .isEmail().withMessage('Unesite ispravan email'),
