@@ -33,13 +33,17 @@ const HomeConference = () => {
         <hr className="w-full mb-10" />
         <div className="flex flex-row justify-center items-start gap-24 flex-wrap w-full">
           <div className="flex flex-col items-center text-center w-56">
-            <img src={fmonLogo} alt="FMON logo" className="h-28 object-contain mb-3"/>
+            <a href="https://fmroi.gov.ba/" target="_blank" rel="noopener noreferrer">
+              <img src={fmonLogo} alt="FMON logo" className="h-28 object-contain mb-3"/>
+            </a>
             <p className="text-l text-primary leading-tight">
               Federalno ministarstvo obrazovanja i nauke
             </p>
           </div>
           <div className="flex flex-col items-center text-center w-56">
-            <img src={monKSLogo} alt="MONKS logo" className="h-28 object-contain mb-3"/>
+            <a href="https://mon.ks.gov.ba/" target="_blank" rel="noopener noreferrer">
+              <img src={monKSLogo} alt="FMON logo" className="h-28 object-contain mb-3"/>
+            </a>
             <p className="text-l text-primary leading-tight">
               Ministarstvo za nauku, visoko obrazovanje i mlade Kantona Sarajevo
             </p>
