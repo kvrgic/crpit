@@ -5,12 +5,14 @@ import { useLoginUserMutation } from '../../redux/features/auth/authApi';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../redux/features/auth/authSlice';
 import bgImg from '../../assets/3274408.jpg';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [loginUser, {isLoading: loginloading}] = useLoginUserMutation()
     
     const navigate = useNavigate();
@@ -49,20 +51,31 @@ const Login = () => {
     <div className='relative z-10 bg-white/90 backdrop-blur-md max-w-sm w-full rounded-xl shadow-2xl ring-1 ring-white/20 p-8 mt-10 transition-transform duration-300 hover:scale-[1.02]'>
         <h2 className='text-2xl font-semibold pt-5'>Prijavite se</h2>
         <form onSubmit={handleLogin} className='space-y-5 max-w-sm mx-auto pt-8'>
-            <input type="email" value={email} 
+          <input type="email" value={email} 
             placeholder='E-mail adresa'
             required
             onChange={(e) => setEmail(e.target.value)}
             className='w-full bg-bgPrimary focus:outline-none px-5 py-3'
-            />
-
-            <input type="password" value={password} 
+          />
+          <div className='relative'>
+            <input type={showPassword ? "text" : "password"}
             placeholder='Lozinka'
             required
             onChange={(e) => setPassword(e.target.value)}
             className='w-full bg-bgPrimary focus:outline-none px-5 py-3'
             />
-
+            <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600">
+            {showPassword ? (
+            <EyeSlashIcon className="h-4 w-4" />
+            ) : (
+            <EyeIcon className="h-4 w-4" />
+            )}
+            </button>
+          </div>
+            
             {
                 message && <p className='text-red-500'>{message}</p>
             }
