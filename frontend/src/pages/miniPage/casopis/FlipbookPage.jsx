@@ -1,9 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import HTMLFlipBook from "react-pageflip";
+
 
 const FlipbookPage = () => {
   const [showBook, setShowBook] = useState(false);
+  const bookRef = useRef();
   const totalPages = 40;
+
+    useEffect(() => {
+    if (!showBook) return;
+
+    const handleKeyDown = (e) => {
+      if (!bookRef.current) return;
+
+      const flip = bookRef.current.pageFlip();
+      if (e.key === "ArrowLeft") {
+        flip.flipPrev();
+      } else if (e.key === "ArrowRight") {
+        flip.flipNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showBook]);
 
   const renderPages = () => {
     const pages = [];
@@ -26,6 +48,7 @@ const FlipbookPage = () => {
         </div>
       ) : (
         <HTMLFlipBook
+          ref={bookRef}
           width={500}
           height={700}
           size="stretch"
